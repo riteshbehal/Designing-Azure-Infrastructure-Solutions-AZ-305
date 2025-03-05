@@ -1,0 +1,36 @@
+apiVersion: 2019-12-01
+location: northeurope
+name: SQLAppGroup
+properties:
+  containers:
+    - name: db
+      properties:
+        image: appregistry1212.azurecr.io/appsqlimage:latest
+        resources:
+          requests:
+            cpu: 1
+            memoryInGb: 1.5
+        ports:
+          - port: 3306
+    - name: web
+      properties:
+        image: appregistry1212.azurecr.io/sqlapp:latest
+        resources:
+          requests:
+            cpu: 1
+            memoryInGb: 1.5
+        ports:
+          - port: 80
+  osType: Linux
+  ipAddress:
+    type: Public
+    ports:
+      - protocol: tcp
+        port: 80
+      - protocol: tcp
+        port: 3306
+  imageRegistryCredentials:
+    - server: appregistry1212.azurecr.io
+      username: appregistry1212
+      password: plvAXQngcXXH6OSmTtKNXmVexr+7EY/WsJNaox4QkK+ACRBDCzZ3
+type: Microsoft.ContainerInstance/containerGroups

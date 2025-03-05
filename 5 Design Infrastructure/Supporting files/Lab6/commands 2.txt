@@ -1,0 +1,18 @@
+sudo docker build -t sqlapp .
+
+
+---------Push this to Azure Container Registry
+
+sudo docker login appregistry1212.azurecr.io -u appregistry1212 -p plvAXQngcXXH6OSmTtKNXmVexr+7EY/WsJNaox4QkK+ACRBDCzZ3
+
+sudo docker tag sqlapp appregistry1212.azurecr.io/sqlapp
+
+sudo docker push appregistry1212.azurecr.io/sqlapp
+
+
+
+
+----------to run the deployment file 
+
+
+az container create --resource-group new-grp --file deployment.yml

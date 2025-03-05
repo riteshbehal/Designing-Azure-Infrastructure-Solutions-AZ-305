@@ -1,0 +1,10 @@
+sudo docker build -t appsqlimage .
+
+
+Push this to Azure Container Registry
+
+sudo docker login appregistry1212.azurecr.io -u appregistry1212 -p plvAXQngcXXH6OSmTtKNXmVexr+7EY/WsJNaox4QkK+ACRBDCzZ3
+
+sudo docker tag appsqlimage appregistry1212.azurecr.io/appsqlimage
+
+sudo docker push appregistry1212.azurecr.io/appsqlimage
